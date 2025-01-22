@@ -1,0 +1,7 @@
+UI_EN = {
+  UI_STNIMBLE_B42_ModOptions_title = "Standardized Nimble XP"
+  UI_STNIMBLE_B42_ModOptions_multiplier_label = "Multiplier",
+  UI_STNIMBLE_B42_ModOptions_multiplier_tooltip = "Exp multiplier for Nimble skill",
+  UI_STNIMBLE_B42_ModOptions_delay_label = "Delay",
+  UI_STNIMBLE_B42_ModOptions_delay_tooltip = "Delay between bar exp rewards, default: 1000 (~9-10 sec)"
+}
