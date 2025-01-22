@@ -1,7 +1,0 @@
-UI_RU = {
-  UI_STNIMBLE_B42_ModOptions_title = "Standardized Nimble XP"
-  UI_STNIMBLE_B42_ModOptions_multiplier_label = "Множитель",
-  UI_STNIMBLE_B42_ModOptions_multiplier_tooltip = "Множитель опыта для скила Проворность",
-  UI_STNIMBLE_B42_ModOptions_delay_label = "Задержка",
-  UI_STNIMBLE_B42_ModOptions_delay_tooltip = "Задержка между наградами опыта, по умолчанию: 1000 (~9-10 сек)"
-}

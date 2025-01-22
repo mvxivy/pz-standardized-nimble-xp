@@ -13,9 +13,7 @@
 --************************************************************************************************
 --**  Would not recommend changing anything past this point unless you know what you are doing. **
 --************************************************************************************************
-local config = StandardizedNimbleXP_global.config;
-StandardizedNimbleXP_global.InitConfig();
-
+local config = StandardizedNimbleXP_config
 local nimbleMultiplier = {5,10,25,50,100,1000};
 local nimbleDelay = {250,500,1000,2500,5000};
 xpThrottleNimble = 0; -- Just a counting variable.
@@ -30,7 +28,7 @@ NimbleBonusXP = function()
 
 		local delay = tonumber(nimbleDelay[tonumber(config.ComboBoxDelay.getValue())])
 
-		if(throttle > delay)) then
+		if(throttle > delay) then
 			xp:AddXP(Perks.Nimble, tonumber(nimbleMultiplier[tonumber(config.ComboBoxMultiplier.getValue())]));
 			xpThrottleNimble = 0;
 		end
@@ -39,6 +37,8 @@ NimbleBonusXP = function()
 end
 
 Events.OnPlayerMove.Add(NimbleBonusXP);
+
+-- DEBUG
 Event.OnPlayerMove.Add(function()
 	print("selected mutliplier option number: " .. config.ComboBoxMultiplier.getValue())
 	print("selected multiplier option value: " .. nimbleMultiplier[tonumber(config.ComboBoxMultiplier.getValue())])
