@@ -26,10 +26,10 @@ NimbleBonusXP = function()
 	-- if you're aiming and walking
 	if player:isAiming() then
 
-		local delay = tonumber(nimbleDelay[tonumber(config.ComboBoxDelay.getValue())])
+		local delay = tonumber(nimbleDelay[tonumber(config.ComboBoxDelay:getValue())])
 
 		if(throttle > delay) then
-			xp:AddXP(Perks.Nimble, tonumber(nimbleMultiplier[tonumber(config.ComboBoxMultiplier.getValue())]));
+			xp:AddXP(Perks.Nimble, tonumber(nimbleMultiplier[tonumber(config.ComboBoxMultiplier:getValue())]));
 			xpThrottleNimble = 0;
 		end
 		xpThrottleNimble = throttle + 1;
@@ -38,10 +38,12 @@ end
 
 Events.OnPlayerMove.Add(NimbleBonusXP);
 
+local function Debug ()
+	print("selected mutliplier option number: " .. config.ComboBoxMultiplier:getValue())
+	print("selected multiplier option value: " .. nimbleMultiplier[tonumber(config.ComboBoxMultiplier:getValue())])
+	print("selected delay option number: " .. config.ComboBoxDelay:getValue())
+	print("selected delay option value: " .. nimbleDelay[tonumber(config.ComboBoxDelay:getValue())])
+end
+
 -- DEBUG
-Event.OnPlayerMove.Add(function()
-	print("selected mutliplier option number: " .. config.ComboBoxMultiplier.getValue())
-	print("selected multiplier option value: " .. nimbleMultiplier[tonumber(config.ComboBoxMultiplier.getValue())])
-	print("selected delay option number: " .. config.ComboBoxDelay.getValue())
-	print("selected delay option value: " .. nimbleDelay[tonumber(config.ComboBoxDelay.getValue())])
-end)
+Events.OnPlayerMove.Add(Debug);
