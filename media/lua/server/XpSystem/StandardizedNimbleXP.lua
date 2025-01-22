@@ -1,8 +1,5 @@
 --****************************************************************************************************************
 --**		Created By: 	Conqueror Koala																		**
---**		Updated By:		Mortazar																					**
---** 		Last update at: 	22-01-2025																		**
---****************************************************************************************************************
 --**		Mod:			Standardized Nimble XP																**
 --**																											**		
 --**		Information:																						**
@@ -10,38 +7,66 @@
 --**					Feel free to use any of the code in your own projects, don't worry about crediting. 	**
 --****************************************************************************************************************
 
+--ONLY EDIT IF YOU DO **NOT** HAVE ModOptions
+		--*********************************************************************************************
+		--**				ALTER THIS NUMBER TO INCREASE/DECREASE Nimble XP MULTIPLIER				 **
+		NimbleXpMultiplier = 10;
+		--*********************************************************************************************
+
+		--*********************************************************************************************************
+		--**				ALTER THIS NUMBER TO INCREASE/DECREASE DELAY BETWEEN Nimble XP POINTS				 **
+		NimbleXpDelay = 1000;
+		--*********************************************************************************************************
+
+
+
 --************************************************************************************************
 --**  Would not recommend changing anything past this point unless you know what you are doing. **
 --************************************************************************************************
-local config = StandardizedNimbleXP_global.config;
-StandardizedNimbleXP_global.InitConfig();
+local SETTINGS = StandardizedNimbleXP_global.SETTINGS
 
-local nimbleMultiplier = {5,10,25,50,100,1000};
+local nimbleMult = {5,10,25,50,100,1000};
 local nimbleDelay = {250,500,1000,2500,5000};
 xpThrottleNimble = 0; -- Just a counting variable.
 
+-- used everytime the player moves
 NimbleBonusXP = function()
-	local throttle = tonumber(xpThrottleNimble)
-	xpThrottleNimble = throttle;
+xpThrottleNimble = tonumber(xpThrottleNimble);
 	local player = getPlayer();
 	local xp = player:getXp();
 	-- if you're aiming and walking
 	if player:isAiming() then
-
-		local delay = tonumber(nimbleDelay[tonumber(config.ComboBoxDelay.getValue())])
-
-		if(throttle > delay)) then
-			xp:AddXP(Perks.Nimble, tonumber(nimbleMultiplier[tonumber(config.ComboBoxMultiplier.getValue())]));
+		if(tonumber(xpThrottleNimble) > tonumber(NimbleXpDelay)) then
+			xp:AddXP(Perks.Nimble, tonumber(NimbleXpMultiplier));
 			xpThrottleNimble = 0;
 		end
-		xpThrottleNimble = throttle + 1;
+		xpThrottleNimble = tonumber(xpThrottleNimble) + 1;
 	end
 end
 
-Events.OnPlayerMove.Add(NimbleBonusXP);
-Event.OnPlayerMove.Add(function()
-	print("selected mutliplier option number: " .. config.ComboBoxMultiplier.getValue())
-	print("selected multiplier option value: " .. nimbleMultiplier[tonumber(config.ComboBoxMultiplier.getValue())])
-	print("selected delay option number: " .. config.ComboBoxDelay.getValue())
-	print("selected delay option value: " .. nimbleDelay[tonumber(config.ComboBoxDelay.getValue())])
+NimbleBonusXP_ModOptions = function()
+xpThrottleNimble = tonumber(xpThrottleNimble);
+	local player = getPlayer();
+	local xp = player:getXp();
+	-- if you're aiming and walking
+	if player:isAiming() then
+		if(tonumber(xpThrottleNimble) > tonumber(nimbleDelay[tonumber(SETTINGS.options.dropdown2)])) then
+			xp:AddXP(Perks.Nimble, tonumber(nimbleMult[tonumber(SETTINGS.options.dropdown1)]));
+			xpThrottleNimble = 0;
+		end
+		xpThrottleNimble = tonumber(xpThrottleNimble) + 1;
+	end
+end
+
+
+if(SETTINGS) then
+	Events.OnPlayerMove.Add(NimbleBonusXP_ModOptions); -- Calls the above function every time player moves.
+	else
+		Events.OnPlayerMove.Add(NimbleBonusXP); -- Calls the above function every time player moves.
+end
+Events.OnGameStart.Add(function()
+  if not isClient() then -- only host may take these options
+    --print("dropdown1 = ", SETTINGS.options.dropdown1)
+	--print("INDEXING = ",nimbleMult[1])
+  end
 end)
