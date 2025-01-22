@@ -19,8 +19,7 @@ local nimbleDelay = {250,500,1000,2500,5000};
 xpThrottleNimble = 0; -- Just a counting variable.
 
 NimbleBonusXP = function()
-	local throttle = tonumber(xpThrottleNimble)
-	xpThrottleNimble = throttle;
+	xpThrottleNimble = tonumber(xpThrottleNimble);
 	local player = getPlayer();
 	local xp = player:getXp();
 	-- if you're aiming and walking
@@ -28,11 +27,11 @@ NimbleBonusXP = function()
 
 		local delay = tonumber(nimbleDelay[tonumber(config.ComboBoxDelay:getValue())])
 
-		if(throttle > delay) then
+		if(tonumber(xpThrottleNimble) > delay) then
 			xp:AddXP(Perks.Nimble, tonumber(nimbleMultiplier[tonumber(config.ComboBoxMultiplier:getValue())]));
 			xpThrottleNimble = 0;
 		end
-		xpThrottleNimble = throttle + 1;
+		xpThrottleNimble = tonumber(xpThrottleNimble) + 1;
 	end
 end
 
