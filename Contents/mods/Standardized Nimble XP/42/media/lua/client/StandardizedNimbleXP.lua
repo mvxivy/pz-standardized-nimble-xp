@@ -45,4 +45,4 @@ local function Debug ()
 end
 
 -- DEBUG
-Events.OnPlayerMove.Add(Debug);
+-- Events.OnPlayerMove.Add(Debug);
