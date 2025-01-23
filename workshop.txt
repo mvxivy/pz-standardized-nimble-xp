@@ -1,0 +1,6 @@
+version=1
+id=3412765574
+title=Standardized Nimble XP
+description=Standardized Nimble XP for build 42 (41 supported)
+tags=Build 41;Build 42;Skills
+visibility=public
