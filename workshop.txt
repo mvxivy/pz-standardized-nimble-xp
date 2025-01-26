@@ -1,28 +1,28 @@
 version=1
 id=3412765574
 title=Standardized Nimble XP
-description=Standardized Nimble XP for build 42 (41 supported*)
-description=
-description=This is an update to the great [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2650512095]mod[/url] by ConquerorKoala
-description=
-description=[h3]How it works[/h3]
-description=
-description=[i]Original description:
-description=Project Zomboid uses a random number generator (RNG) to determine whether the player gains Nimble XP.
-description=This mod changes that to a new method where the player is constantly rewarded with XP for combat walking, every X (configurable) times for Y (configurable) bonus XP.
-description=This means you can reliably gain Nimble XP without depending on the RNG.[/i]
-description=
-description=[h3]Details[/h3]
-description=[list]
-description=[*] *The mod should work for build 41, but I [b]haven't tested it[/b]. If you can test it and give feedback, that would be great.
-description=[*] To build mod 41, you need [url=https://steamcommunity.com/workshop/filedetails/?id=2169435993]ModOptions[/url], as before.
-description=[*] To build mod 42, you don't need ModOptions.
-description=[/list]
-description=
-description=[h3]Settings[/h3]
-description=As in build 41, the mod settings are in the "Settings" -> "Mods" tab.
-description=
-description=Supported languages:
-description=EN ??, RU ??
+description=Standardized Nimble XP for build 42 (41 supported*)
+description=
+description=This is an update to the great [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2650512095]mod[/url] by ConquerorKoala
+description=
+description=[h3]How it works[/h3]
+description=
+description=[i]Original description:
+description=Project Zomboid uses a random number generator (RNG) to determine whether the player gains Nimble XP.
+description=This mod changes that to a new method where the player is constantly rewarded with XP for combat walking, every X (configurable) times for Y (configurable) bonus XP.
+description=This means you can reliably gain Nimble XP without depending on the RNG.[/i]
+description=
+description=[h3]Details[/h3]
+description=[list]
+description=[*] *The mod should work for build 41, but I [b]haven't tested it[/b]. If you can test it and give feedback, that would be great.
+description=[*] To build mod 41, you need [url=https://steamcommunity.com/workshop/filedetails/?id=2169435993]ModOptions[/url], as before.
+description=[*] To build mod 42, you don't need ModOptions.
+description=[/list]
+description=
+description=[h3]Settings[/h3]
+description=As in build 41, the mod settings are in the "Settings" -> "Mods" tab.
+description=
+description=Supported languages:
+description=EN ??, RU ??
 tags=Build 41;Build 42;Balance;Skills
 visibility=public
