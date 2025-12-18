@@ -1,6 +1,9 @@
+id=STNIMBLE_B42
 name=Standardized Nimble XP
 poster=poster.png
-id=STNIMBLE_B42
-description=Standardized Nimble XP for build 42 (41 supported)
-authors=ConquerorKoala,Mortazar
-require=modoptions
+icon=icon.png
+description=Standardized Nimble XP for 42 Build
+author=Mortazar
+modversion=1.0.3
+pzversion=42
+versionMin=42.0.0

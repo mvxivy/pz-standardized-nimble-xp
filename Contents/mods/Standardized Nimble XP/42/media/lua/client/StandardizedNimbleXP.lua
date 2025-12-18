@@ -11,6 +11,7 @@ local NimbleBonusXP = function()
   if player:isAiming() then
     local delay = nimbleDelay[modOptions.ComboBoxDelay:getValue()]
 		local multiplier = nimbleMultiplier[modOptions.ComboBoxMultiplier:getValue()]
+    if not multiplier then multiplier = 10 end
 
     if (xpThrottleNimble > delay) then
       xp:AddXP(Perks.Nimble, multiplier);
