@@ -1,0 +1,9 @@
+Sandbox_EN = {
+  Sandbox_STNIMBLE_B42 = "Nimble XP",
+
+  Sandbox_STNIMBLE_B42_XPPerPulse = "XP per pulse",
+  Sandbox_STNIMBLE_B42_XPPerPulse_tooltip = "How much Nimble XP is granted per server-approved pulse.",
+
+  Sandbox_STNIMBLE_B42_MinIntervalSeconds = "Rate limit (seconds)",
+  Sandbox_STNIMBLE_B42_MinIntervalSeconds_tooltip = "Minimum seconds between XP grants per player on the server.",
+}

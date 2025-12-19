@@ -41,4 +41,26 @@ function MVXIVY_Utils.useComboBoxFactory(comboBoxNamespace, localizeNamespace, U
   end
 end
 
+function MVXIVY_Utils.nowSeconds()
+  return getTimestamp and getTimestamp() or os.time()
+end
+
+--- get unique key for player
+---@param player IsoPlayer
+function MVXIVY_Utils.getPlayerUniqueId(player)
+  if player.getUsername then
+    return player:getUsername()
+  end
+  return tostring(player:getOnlineID())
+end
+
+function MVXIVY_Utils.throttledFnByTicks(fn, ticks)
+  local lastRun = 0
+  return function() 
+    lastRun = lastRun + 1
+    if lastRun % ticks ~= 0 then return end
+    fn()
+  end
+end
+  
 return MVXIVY_Utils

@@ -1,8 +1,10 @@
 local config = require("ST_Nimble_Config")
 local MVXIVY_Utils = require("MVXIVY_Utils")
 local modOptions = {}
-
-function modOptions.init()
+--- init mod options in game settings menu
+---@param isSingleplayer boolean
+function modOptions.init(isSingleplayer)
+	isSingleplayer = isSingleplayer or true
   local UI = PZAPI.ModOptions:create(config.modId, config.modName)
 
 	local ComboBoxFactory = MVXIVY_Utils.useComboBoxFactory(
@@ -11,13 +13,16 @@ function modOptions.init()
     UI
   )
 
-	modOptions.ComboBoxMultiplier = ComboBoxFactory{
-		name = "Multiplier",
-		label = "multiplier_label",
-		items = {"5x", "10x", "25x", "50x", "100x", "1000x"},
-		defaultItem = 2,
-		description = "multiplier_description"
-	}
+	if isSingleplayer then
+		modOptions.ComboBoxMultiplier = ComboBoxFactory{
+			name = "Multiplier",
+			label = "multiplier_label",
+			items = {"5x", "10x", "25x", "50x", "100x", "1000x"},
+			defaultItem = 2,
+			description = "multiplier_description"
+		}	
+	end
+	
 
 	modOptions.ComboBoxDelay = ComboBoxFactory{
 		name = "Delay",
