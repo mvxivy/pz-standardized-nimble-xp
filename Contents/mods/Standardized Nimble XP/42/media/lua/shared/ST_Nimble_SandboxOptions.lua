@@ -1,7 +1,7 @@
 local sandboxFns = {}
 
 function sandboxFns.getOpt(path, fallback)
-  -- path like {"NimbleXP","XPPerPulse"}
+  -- path like {"STNIMBLE_B42","XPPerPulse"}
   local t = SandboxVars
   for i = 1, #path do
     if type(t) ~= "table" then

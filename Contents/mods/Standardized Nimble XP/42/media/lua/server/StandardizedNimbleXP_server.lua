@@ -4,11 +4,11 @@ local sandboxFns = require("ST_Nimble_SandboxOptions")
 
 local lastGrantAt = {} -- key -> time seconds
 local function getXPPerPulse()
-  return sandboxFns.getOpt({"NimbleXP", "XPPerPulse"}, 10)
+  return sandboxFns.getOpt({"STNIMBLE_B42", "XPPerPulse"}, 10)
 end
 
 local function getMinInterval()
-  return sandboxFns.getOpt({"NimbleXP", "MinIntervalSeconds"}, 1.0)
+  return sandboxFns.getOpt({"STNIMBLE_B42", "MinIntervalSeconds"}, 1.0)
 end
 
 --- allow grant for 
