@@ -1,7 +1,7 @@
-local utils = require("MVXIVY_Utils")
 local config = require("ST_Nimble_Config")
 local modOptions = require("ST_Nimble_ModOptions")
-modOptions.init(isMultiplayer())
+
+modOptions.init(not isMultiplayer())
 
 local nimbleMultiplier = {5, 10, 25, 50, 100, 1000};
 local nimbleDelay = {250, 500, 1000, 2500, 5000};
