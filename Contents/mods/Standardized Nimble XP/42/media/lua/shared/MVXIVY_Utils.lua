@@ -1,8 +1,7 @@
 local MVXIVY_Utils = {}
 
 function MVXIVY_Utils.addComboBoxItems(comboBox, items, defaultItem)
-  for i = 1, #items do
-    local item = items[i]
+  for i, item in ipairs(items) do
     comboBox:addItem(item, i == defaultItem)
   end
 end
@@ -13,14 +12,14 @@ end
 -- @param UI The UI object to which the combo box will be added.
 -- @return A function that takes an options table and returns a combo box.
 function MVXIVY_Utils.useComboBoxFactory(comboBoxNamespace, localizeNamespace, UI)
-  --- Creates and returns a combo box UI element with specified options.
-  -- @param options table A table containing the following fields:
-  --   - name: string The name of the combo box.
-  --   - label: string The label text for the combo box.
-  --   - items: table A table of items to populate the combo box.
-  --   - defaultItem: string The default selected item in the combo box.
-  --   - description: string (Optional) A description text for the combo box.
-  -- @return table The created combo box UI element.
+  --- Creates and returns a combo box UI element using the provided options table.
+  -- @param options table Table with the following fields:
+  --   name (string): Suffix for the combo box key (used as: comboBoxNamespace .. name).
+  --   label (string): Localization key (without namespace) for the label text.
+  --   items (table): Array of strings, the items to populate the combo box.
+  --   defaultItem (number): The index of the item that should be selected by default (1-based).
+  --   description (string, optional): Localization key (without namespace) for an additional description (if provided).
+  -- @return table: The created combo box UI element.
   return function (options)
     local comboBox = UI:addComboBox(
       comboBoxNamespace .. options.name,
@@ -34,19 +33,22 @@ function MVXIVY_Utils.useComboBoxFactory(comboBoxNamespace, localizeNamespace, U
     )
 
     if options.description then
-       UI:addDescription(getText(localizeNamespace .. options.description))
+      UI:addDescription(getText(localizeNamespace .. options.description))
     end
 
     return comboBox
   end
 end
 
+--- get current time in seconds
+---@return number
 function MVXIVY_Utils.nowSeconds()
   return getTimestamp and getTimestamp() or os.time()
 end
 
 --- get unique key for player
 ---@param player IsoPlayer
+---@return string
 function MVXIVY_Utils.getPlayerUniqueId(player)
   if player.getUsername then
     return player:getUsername()
@@ -54,6 +56,10 @@ function MVXIVY_Utils.getPlayerUniqueId(player)
   return tostring(player:getOnlineID())
 end
 
+--- throttle a function by ticks
+---@param fn function
+---@param ticks number
+---@return function
 function MVXIVY_Utils.throttledFnByTicks(fn, ticks)
   local lastRun = 0
   return function() 
@@ -62,5 +68,5 @@ function MVXIVY_Utils.throttledFnByTicks(fn, ticks)
     fn()
   end
 end
-  
+
 return MVXIVY_Utils

@@ -1,19 +1,19 @@
 local utils = require("MVXIVY_Utils")
 local config = require("ST_Nimble_Config")
-local sandboxFns = require("ST_Nimble_SandboxOptions")
+local sandboxUtils = require("ST_Nimble_SandboxOptions")
 
 local lastGrantAt = {} -- key -> time seconds
 local function getXPPerPulse()
-  return sandboxFns.getOpt({"STNIMBLE_B42", "XPPerPulse"}, 10)
+  return sandboxUtils.getOpt({"STNIMBLE_B42", "XPPerPulse"}, 10)
 end
 
 local function getMinInterval()
-  return sandboxFns.getOpt({"STNIMBLE_B42", "MinIntervalSeconds"}, 1.0)
+  return sandboxUtils.getOpt({"STNIMBLE_B42", "MinIntervalSeconds"}, 1.0)
 end
 
 --- allow grant for 
 ---@param player IsoPlayer
-local function allowGrant(player)
+local function allowGrantNimbleXp(player)
   local key = utils.getPlayerUniqueId(player)
   local t = utils.nowSeconds()
   local prev = lastGrantAt[key] or 0
@@ -31,8 +31,6 @@ local function allowGrant(player)
   lastGrantAt[key] = t
   return true
 end
-
--- /setaccesslevel MVXIVY admin
 
 local function serverValidate(player)
   if not player or player:isDead() then
@@ -72,7 +70,7 @@ local function onClientCommand(module, command, player, args)
 
   -- print("[NimbleXP] Passed initial checks")
 
-  if not allowGrant(player) then return end
+  if not allowGrantNimbleXp(player) then return end
   -- if not serverValidate(player) then return end
 
   -- print("[NimbleXP] Passed validation checks, granting XP")

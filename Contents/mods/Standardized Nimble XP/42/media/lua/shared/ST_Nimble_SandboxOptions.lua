@@ -1,6 +1,6 @@
-local sandboxFns = {}
+local sandboxUtils = {}
 
-function sandboxFns.getOpt(path, fallback)
+function sandboxUtils.getOpt(path, fallback)
   -- path like {"STNIMBLE_B42","XPPerPulse"}
   local t = SandboxVars
   for i = 1, #path do
@@ -15,4 +15,4 @@ function sandboxFns.getOpt(path, fallback)
   return t
 end
 
-return sandboxFns
+return sandboxUtils
