@@ -1,14 +1,13 @@
 local utils = require("MVXIVY_Utils")
 local config = require("ST_Nimble_Config")
-local sandboxUtils = require("ST_Nimble_SandboxOptions")
 
 local lastGrantAt = {} -- key -> time seconds
 local function getXPPerPulse()
-  return sandboxUtils.getOpt({"STNIMBLE_B42", "XPPerPulse"}, 10)
+  return utils.sandbox.getOptionValue({"STNIMBLE_B42", "XPPerPulse"}, 10)
 end
 
 local function getMinInterval()
-  return sandboxUtils.getOpt({"STNIMBLE_B42", "MinIntervalSeconds"}, 1.0)
+  return utils.sandbox.getOptionValue({"STNIMBLE_B42", "MinIntervalSeconds"}, 1.0)
 end
 
 --- allow grant for 
